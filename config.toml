@@ -1,0 +1,76 @@
+theme = "onedark"
+
+[editor]
+scrolloff = 5
+mouse = true
+middle-click-paste = true
+scroll-lines = 3
+shell = ["/usr/bin/fish", "-c"]
+line-number = "absolute"
+cursorline = true
+cursorcolumn = true
+gutters = ["diagnostics", "line-numbers", "spacer"]
+auto-completion = true
+auto-format = true
+idle-timeout = 400
+completion-trigger-len = 2
+auto-info = true
+true-color = true
+rulers = [] # column position
+bufferline = "multiple" # always, never, multiple
+color-modes = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = [ "position-percentage", "spacer", "file-name", "spacer", "total-line-numbers","spacer", "file-encoding"]
+right = ["diagnostics", "selections", "file-line-ending", "position", "file-type"]
+separator = "│"
+mode.normal = "NOR"
+mode.insert = "INS"
+mode.select = "SEL"
+
+[editor.lsp]
+display-messages = true
+auto-signature-help = true
+display-signature-help-docs = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = true# true
+parents = false# true
+ignore = true# true
+git-ignore = false# true
+git-global = true# true
+git-exclude = true# true
+#max-depth = "None"# None
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+
+[editor.whitespace]
+space = "none"
+nbsp = "all"
+tab = "all"
+tabpad = "all"
+newline = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.indent-guides]
+render = true
+character = "┊" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1

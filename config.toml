@@ -5,20 +5,31 @@ scrolloff = 3
 mouse = true
 middle-click-paste = true
 scroll-lines = 3
-shell =  ["nu", "-c"]
+shell = ["/usr/bin/bash", "-c"]
 line-number = "absolute"
 cursorline = true
-gutters = ["diagnostics", "line-numbers"]
+cursorcolumn = true
 auto-completion = true
 auto-format = true
+auto-save = false
 idle-timeout = 400
 completion-trigger-len = 2
+completion-replace = false
 auto-info = true
 true-color = true
-rulers = []
+undercurl = false
+rulers = [] # column position
+bufferline = "multiple" # always, never, multiple
 color-modes = true
+text-width = 80
 
 [editor.statusline]
+# Options: mode, spacer
+# spinner [lsp], diagnostics, workspace-diagnostics, version-control
+# selections, primary-selection-length
+# position, position-percentage
+# file-name, file-base-name, file-modification-indicator [+], file-encoding, file-line-ending, file-type
+# 
 left = ["mode", "spinner"]
 center = ["position-percentage", "file-name", "position"]
 right = ["diagnostics", "selections", "file-encoding", "file-line-ending", "file-type"]
@@ -27,6 +38,7 @@ right = ["diagnostics", "selections", "file-encoding", "file-line-ending", "file
 display-messages = true
 auto-signature-help = true
 display-signature-help-docs = true
+display-inlay-hints = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -34,13 +46,15 @@ normal = "block"
 select = "underline"
 
 [editor.file-picker]
-hidden = false
-parents = false
-ignore = false
-git-ignore = false
-git-global = false
-git-exclude = false
-# max-depth = None
+hidden = true# true
+#follow-links = true # true
+deduplicate-links = true # true
+parents = false# true
+ignore = true# true
+git-ignore = false# true
+git-global = false# true
+git-exclude = false# true
+max-depth = 0 # None
 
 [editor.auto-pairs]
 '(' = ')'
@@ -48,11 +62,11 @@ git-exclude = false
 '[' = ']'
 '"' = '"'
 '`' = '`'
-'<' = '>'
+#'<' = '>'
 
 [editor.search]
-smart-case = true
-wrap-around = true
+smart-case = true #true. Enable smart case regex searching (case-insensitive unless pattern contains upper case characters)
+wrap-around = true # true. Whether the search should wrap after depleting the matches
 
 [editor.whitespace]
 
@@ -72,8 +86,6 @@ tab = "→"
 newline = "⏎"
 tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 
-[editor.indent-guides]
-render = true
 
 [keys.normal]
 "ret" = ["open_below", "normal_mode"]
@@ -99,3 +111,22 @@ render = true
 "pageup" = "page_up"
 "pagedown" = "page_down"
 #"ins"
+
+[editor.indent-guides]
+render = true
+character = "┊" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1 # 0
+
+
+[editor.gutters]
+layout = ["diagnostics","spacer", "line-numbers", "spacer", "diff"]
+
+[editor.gutters.line-numbers]
+min-width = 3 #3
+
+[editor.soft-wrap]
+enable = true #false
+max-wrap = 20
+max-indent-retain = 40
+wrap-indicator = "↪"
+wrap-at-text-width = false #false
